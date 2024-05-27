@@ -28,13 +28,15 @@ that can be achieved through evaporative cooling.
 import pandas as pd
 
 # Reading the csv file contents into a pandas DataFrame called "dataset"
-weather_data = pd.read_csv("DataSet_from_Jan2024_to_Apr2024.csv")
+weather_data = pd.read_csv("Datasets/DataSet_from_Jan_1_2020_to_Jan_1_2024.csv")
 
 # Acquiring the revelant data from the dataset into a sub dataset called "required_dataset"
 # This dataset contains the Station, Date of Reading(includes time), Hourly Dry Bulb Temperature, and Hourly Wet Bulb Temperature
 weather_data = weather_data[["STATION","DATE","HourlyDryBulbTemperature","HourlyWetBulbTemperature"]]
 
-# weather_data["Date"] = 
+# Renaming DATE and STATION Columns to Date and Station
+weather_data.rename(columns={'DATE':'Date', 'STATION':'Station'}, inplace=True)
 
-print(required_dataset)
+# weather_data.head(): Printing the First 5 rows of the dataframe
+print(weather_data.head())
 
