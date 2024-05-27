@@ -4,7 +4,7 @@
 About the Data Set:
 The sample data set is sourced from National Ocean and Atomspheric Administration (NOAA). 
 Currently, I have acquired the hourly temperature readings of
-Dallas (Zip Code: 75001) from Jan 1, 2024 to May 14, 2024 (ie. 5 months)
+Dallas (Zip Code: 75001) from Jan 1, 2020 to Jan 1, 2024 (ie. 4 years)
 
 Important Definitions for understanding the dataset
 
