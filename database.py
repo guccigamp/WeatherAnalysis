@@ -9,8 +9,12 @@ Definitions:
 
 from sqlalchemy import create_engine
 from sqlalchemy import MetaData
-# Importing functions for creating the table
 from sqlalchemy import (Table, Column, String, Integer, Float)
+import pandas as pd
+
+# Reading the csv file contents into a pandas DataFrame
+df = pd.read_csv("Database/csv/DataSet_from_Jan_1_2020_to_Jan_1_2024.csv")
+
 
 # Created an engine with sqlite driver and the local sqlite file stored in Database Directory
 engine = create_engine('sqlite:///Database/db/texas.db')
@@ -21,19 +25,9 @@ metadata = MetaData()
 # Established a connection with the database
 connection = engine.connect()
 
-# Creating a Table called Dallas and adding columns to it
-# Data gets appended in the metadata
-dallas = Table('Dallas', metadata,
-               Column('Station', Integer()),
-               Column('Date', String()),
-               Column('Time', String()),
-               Column('HourlyDryBulbTemp', Float()),
-               Column('HourlyWetBulbTemp', Float())
-               )
-
-# Creates the table in the actual database by using the create_all() method to the metadata
-metadata.create_all(engine)
+# Creating a Table called Dallas using pd.to_sql()
+# If exists, then replace
+df.to_sql('Dallas', connection, if_exists="replace", index=False)
 
 # TODO: Make a database for each state and make tables for the cities of that state
-# TODO: Load the CSV file into the SQLite Database
-# FIXME: DO NOT FILTER OUT THE IRRELEVANT COLUMNS YET
+
