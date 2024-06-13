@@ -28,10 +28,9 @@ metadata = MetaData()
 # Established a connection with the database
 connection = engine.connect()
 
-# Creating a Table called Dallas using pd.to_sql()
+# Creating a Table called Station Metadata using pd.to_sql()
 # If exists, then replace
 df.to_sql('Station Metadata', connection, if_exists="replace", index=False)
-
 
 
 # TODO-Arizona: Create a table to Metadata
